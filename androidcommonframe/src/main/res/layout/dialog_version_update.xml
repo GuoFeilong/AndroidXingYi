@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@android:color/white">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/at_dimens_128_dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimens_40_dp"
+                android:gravity="center"
+                android:text="@string/find_new_versition"
+                android:textColor="@color/at_color_important_text_for_example_title"
+                android:textSize="@dimen/dimens_14_sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimens_0.5_dp"
+                android:background="@color/at_color_white_cutting_line_and_selected_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimens_0_dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="@dimen/dimens_20_dp">
+
+
+                <TextView
+                    android:id="@+id/tv_new_version_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/dimens_10_dp"
+                    android:textColor="@color/at_color_important_text_for_example_title"
+                    android:textSize="@dimen/dimens_14_sp" />
+
+                <TextView
+                    android:id="@+id/tv_new_version_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/at_color_important_text_for_example_title"
+                    android:textSize="@dimen/dimens_14_sp" />
+
+                <TextView
+                    android:id="@+id/tv_new_version_update_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_16_dp"
+                    android:text="@string/update_desc"
+                    android:textColor="@color/at_color_important_text_for_example_title"
+                    android:textSize="@dimen/dimens_14_sp" />
+
+
+                <LinearLayout
+                    android:id="@+id/ll_version_desc_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimens_0.5_dp"
+                android:background="@color/at_color_white_cutting_line_and_selected_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimens_40_dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_later_update"
+                    android:layout_width="@dimen/dimens_0_dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/later_update"
+                    android:textColor="@color/at_color_captions_text"
+                    android:textSize="@dimen/dimens_16_sp" />
+
+                <View
+                    android:id="@+id/view_update_v_line"
+                    android:layout_width="@dimen/dimens_0.5_dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/at_color_white_cutting_line_and_selected_color" />
+
+                <TextView
+                    android:id="@+id/tv_action_update"
+                    android:layout_width="@dimen/dimens_0_dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/action_update"
+                    android:textColor="@color/at_color_default"
+                    android:textSize="@dimen/dimens_16_sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/at_color_white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/at_dimens_128_dp"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dimens_20_dp"
+            android:paddingRight="@dimen/dimens_20_dp"
+            android:paddingTop="@dimen/dimens_24_dp">
+
+            <TextView
+                android:id="@+id/tv_version_updating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="@dimen/dimens_28_dp"
+                android:text="@string/version_updating"
+                android:textColor="@color/at_color_important_text_for_example_title"
+                android:textSize="@dimen/dimens_16_sp" />
+
+            <com.android.commonframe.ui.customview.RoundProgressbar
+                android:id="@+id/pb_version_progress"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimens_14_dp"
+                android:layout_below="@id/tv_version_updating"
+                android:layout_centerHorizontal="true"
+                app:version_update_background_color="@color/at_color_white_cutting_line_and_selected_color"
+                app:version_update_progress_color="@color/at_color_default" />
+
+            <TextView
+                android:id="@+id/tv_update_percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/pb_version_progress"
+                android:layout_marginTop="@dimen/dimens_14_dp"
+                android:paddingBottom="@dimen/dimens_20_dp"
+                android:textColor="@color/at_color_default"
+                android:textSize="@dimen/dimens_16_sp" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

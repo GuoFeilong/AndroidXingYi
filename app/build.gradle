@@ -1,0 +1,243 @@
+apply plugin: 'com.android.application'
+
+// 打包的时间
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd-HH:mm")
+}
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.2"
+
+    // 打包时错误信息不中断
+    lintOptions {
+        abortOnError false
+    }
+
+    signingConfigs {
+        config {
+            keyAlias 'xinggongyi'
+            keyPassword 'xinggongyi'
+            storeFile file('xinggongyi.jks')
+            storePassword 'xinggongyi'
+        }
+    }
+
+
+    defaultConfig {
+        applicationId "com.android.xingyi"
+        minSdkVersion 16
+        targetSdkVersion 24
+        versionCode Integer.parseInt(new Date().format("yyyyMMdd"))
+        versionName "1.0"
+        signingConfig signingConfigs.config
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.config
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.config
+            zipAlignEnabled true
+        }
+        /*applicationVariants.all { variant ->
+            variant.outputs.each { output ->
+                def outputFile = output.outputFile
+                if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                    def fileName = "asiatravel_v${defaultConfig.versionName}_${variant.productFlavors[0].name}_${variant.buildType.name}_${releaseTime()}.apk"
+                    output.outputFile = new File(outputFile.parent+"/${variant.buildType.name}", fileName)
+
+                }
+
+            }
+        }*/
+    }
+
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['src/main/jniLibs', 'src/main/jniLibs/']
+            debug.setRoot('build-types/debug')
+            release.setRoot('build-types/release')
+        }
+    }
+
+
+    productFlavors {
+        at0 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_DEVELOP
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_DEBUG_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_DEVELOP]
+        }
+
+        at1 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_QA
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_DEBUG_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_QA]
+        }
+        at2 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_PREMAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_DEBUG_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_PREMAPI]
+        }
+        at3 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_DEBUG_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        }
+        official {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //360手机助手
+        channel1 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //360手机助手
+        channel2 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //腾讯应用中心
+        channel3 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //百度手机助手（安卓市场、91手机助手）
+        channel4 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //淘宝手助（PP助手）
+        channel5 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //豌豆荚
+        channel6 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //乐视
+        channel7 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //华为智慧云
+        channel8 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //小米市场
+        channel9 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //魅族应用商店
+        channel10 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //OPPO
+        channel11 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //应用汇
+        channel12 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //安智市场
+        channel13 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //木蚂蚁应用市场
+        channel14 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //优亿市场
+        channel15 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //N多市场
+        channel16 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //搜狗市场
+        channel17 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //亚马逊
+        channel18 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //3G安卓市场
+        channel19 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //阿里云
+        channel20 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //天翼空间
+        channel21 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //联通沃商店
+        channel22 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //移动mm
+        channel23 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //三星乐园
+        channel24 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //MOTO 智件园
+        channel25 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //金立手机
+        channel26 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //HTC商城
+        channel27 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } //酷派商店
+        channel28 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } // vivo
+        channel29 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } // googleplay
+        channel30 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } // lephone商城
+        channel31 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } // 爱玩商店
+        channel32 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } // 微下载
+        channel33 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } // 闺蜜
+        channel100 {
+            resValue "string", "build_host", project.ANDROID_BUILD_URL_MAPI
+            manifestPlaceholders = [ASIA_TRAVEL_VALUE: name, TD_APP_KEY: project.TALKING_DATA_RELEASE_KEY, BUILD_TIME_VALUE: releaseTime() + "", FIR_CHANGE_LOG_VALUE: project.ANDROID_BUILD_URL_MAPI]
+        } // 百度sem创意app下载样式
+    }
+
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:design:24.2.1'
+    compile project(':androidcommonframe')
+}
