@@ -23,7 +23,7 @@ import java.util.List;
  * <pre>three attribute may be write</pre>
  * <pre>if you want to change the point size and seleteror and point margin </pre>
  */
-public class ATDotPointView extends LinearLayout {
+public class DotPointView extends LinearLayout {
     private static final int POINT_DE_SIZE = 9;
     private static final float POINT_DE_MARGIN = 12;
     private List<View> dotList;
@@ -31,30 +31,30 @@ public class ATDotPointView extends LinearLayout {
     private int pointSize;
     private int pointMargin;
 
-    public ATDotPointView(Context context) {
+    public DotPointView(Context context) {
         this(context, null);
     }
 
-    public ATDotPointView(Context context, AttributeSet attrs) {
+    public DotPointView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public ATDotPointView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public DotPointView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         setOrientation(HORIZONTAL);
         setGravity(Gravity.CENTER);
         dotList = new ArrayList<>();
         DisplayMetrics metrics = getResources().getDisplayMetrics();
 
-        TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ATDotPointView, defStyleAttr, 0);
+        TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.DotPointView, defStyleAttr, 0);
         int indexCount = typedArray.getIndexCount();
         for (int i = 0; i < indexCount; i++) {
             int attr = typedArray.getIndex(i);
-            if (R.styleable.ATDotPointView_point_view_selector_background == attr) {
+            if (R.styleable.DotPointView_point_view_selector_background == attr) {
                 mDotPintBackgroundRes = typedArray.getResourceId(attr, 0);
-            } else if (R.styleable.ATDotPointView_point_view_point_size == attr) {
+            } else if (R.styleable.DotPointView_point_view_point_size == attr) {
                 pointSize = typedArray.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, POINT_DE_SIZE, metrics));
-            } else if (R.styleable.ATDotPointView_point_view_point_margin == attr) {
+            } else if (R.styleable.DotPointView_point_view_point_margin == attr) {
                 pointMargin = typedArray.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, POINT_DE_MARGIN, metrics));
             }
         }

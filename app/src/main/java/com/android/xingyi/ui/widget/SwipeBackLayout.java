@@ -78,7 +78,7 @@ public class SwipeBackLayout extends FrameLayout implements OnGestureListener, O
         screenWidth = ScreenUtil.getScreenWidth(context);
         screenHeight = ScreenUtil.getScreenHeight(context);
         finishX = (int) (screenWidth / 3f);
-        mShadowDrawable = getResources().getDrawable(R.mipmap.shadow_left);
+        mShadowDrawable = getResources().getDrawable(R.mipmap.bg_shadow_left);
         this.setOnTouchListener(this);
     }
 

@@ -26,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:scaleType="fitCenter"
-                android:src="@mipmap/image_title_arrow_left" />
+                android:src="@mipmap/icon_image_title_arrow_left" />
 
             <TextView
                 android:id="@+id/tv_activity_left_text"

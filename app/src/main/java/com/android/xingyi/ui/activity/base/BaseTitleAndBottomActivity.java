@@ -219,7 +219,7 @@ public abstract class BaseTitleAndBottomActivity extends SwipBackActivity {
     protected void showNoNetWork() {
         contentViewContainer.setVisibility(View.GONE);
         includeCommonFaied.setVisibility(View.VISIBLE);
-        failedIcon.setImageResource(R.mipmap.failed_wifi_icon);
+        failedIcon.setImageResource(R.mipmap.icon_failed_wifi);
         failedFirstDesc.setText(getResources().getString(R.string.at_no_network));
         failedSeconedDesc.setVisibility(View.GONE);
         failedClickRetry.setText(getResources().getString(R.string.at_click_wifi_load));
@@ -232,7 +232,7 @@ public abstract class BaseTitleAndBottomActivity extends SwipBackActivity {
     protected void showNoData() {
         contentViewContainer.setVisibility(View.GONE);
         includeCommonFaied.setVisibility(View.VISIBLE);
-        failedIcon.setImageResource(R.mipmap.failed_no_data_icon);
+        failedIcon.setImageResource(R.mipmap.icon_failed_no_data);
         failedFirstDesc.setText(getResources().getString(R.string.at_no_failed_data));
         failedSeconedDesc.setVisibility(View.GONE);
         failedClickRetry.setText(getResources().getString(R.string.at_click_no_data_load));
@@ -247,7 +247,7 @@ public abstract class BaseTitleAndBottomActivity extends SwipBackActivity {
     protected void showServerError(String message) {
         contentViewContainer.setVisibility(View.GONE);
         includeCommonFaied.setVisibility(View.VISIBLE);
-        failedIcon.setImageResource(R.mipmap.failed_server_icon);
+        failedIcon.setImageResource(R.mipmap.icon_failed_server);
         failedFirstDesc.setText(StringUtil.isEmpty(message) ? (getResources().getString(R.string.at_server_error_first_text)) : message);
         failedSeconedDesc.setText(getResources().getString(R.string.at_server_error_second_text));
         failedClickRetry.setText(getResources().getString(R.string.at_click_wifi_load));
@@ -332,5 +332,11 @@ public abstract class BaseTitleAndBottomActivity extends SwipBackActivity {
     protected void userDefinedBottomLineVisible(boolean visible) {
         int commonTitleState = visible ? View.VISIBLE : View.GONE;
         commonTitleLine.setVisibility(commonTitleState);
+    }
+
+    protected void addView2BottomBarContainer(View view){
+        if (view != null) {
+            commonBottomContainer.addView(view);
+        }
     }
 }

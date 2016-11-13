@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimens_75_dp"
-        android:src="@mipmap/failed_wifi_icon" />
+        android:src="@mipmap/icon_failed_wifi" />
 
     <TextView
         android:id="@+id/tv_failed_first_text"

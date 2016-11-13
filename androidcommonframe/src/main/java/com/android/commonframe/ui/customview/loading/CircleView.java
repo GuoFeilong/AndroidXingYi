@@ -21,7 +21,7 @@ import com.android.commonframe.R;
  * Created by jsion on 16/8/8.
  */
 
-public class ATCircleView extends View {
+public class CircleView extends View {
     private static final float DE_VIEW_SIZE = 200.F;
     private static final float VIEW_PADDING_SACLE = 1 / 2.5f;
     private int circleWidth;
@@ -36,25 +36,25 @@ public class ATCircleView extends View {
     private float rotateDegree;
     private ValueAnimator valueAnimator;
 
-    public ATCircleView(Context context) {
+    public CircleView(Context context) {
         this(context, null);
     }
 
-    public ATCircleView(Context context, AttributeSet attrs) {
+    public CircleView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public ATCircleView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public CircleView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ATCircleView, defStyleAttr, R.style.def_circleview);
+        TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CircleView, defStyleAttr, R.style.def_circleview);
         int indexCount = typedArray.getIndexCount();
         for (int i = 0; i < indexCount; i++) {
             int attr = typedArray.getIndex(i);
-            if (R.styleable.ATCircleView_circle_width == attr) {
+            if (R.styleable.CircleView_circle_width == attr) {
                 circleWidth = typedArray.getDimensionPixelOffset(attr, 0);
-            } else if (R.styleable.ATCircleView_circle_corner == attr) {
+            } else if (R.styleable.CircleView_circle_corner == attr) {
                 circleCorner = typedArray.getDimensionPixelOffset(attr, 0);
-            } else if (R.styleable.ATCircleView_view_bg_color == attr) {
+            } else if (R.styleable.CircleView_view_bg_color == attr) {
                 viewBgColor = typedArray.getColor(attr, Color.BLACK);
             }
         }

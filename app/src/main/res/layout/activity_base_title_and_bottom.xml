@@ -38,7 +38,7 @@
         android:id="@+id/include_common_bottom"
         layout="@layout/include_layout_bottom"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimens_44_dp"
+        android:layout_height="wrap_content"
         android:visibility="gone" />
 
 </LinearLayout>

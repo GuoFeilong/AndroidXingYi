@@ -10,23 +10,23 @@ import com.android.commonframe.R;
 /**
  * Created by jsion on 16/8/7.
  */
-public class ATCircleDialog extends Dialog {
+public class CircleDialogLoading extends Dialog {
     private int mLoadingViewLayout;
     private boolean mCancelable;
     private boolean mOutsideCancelable;
 
-    private ATCircleDialog(Context context) {
+    private CircleDialogLoading(Context context) {
         this(context, 0);
     }
 
-    private ATCircleDialog(Builder builder) {
+    private CircleDialogLoading(Builder builder) {
         this(builder.mContext, 0);
         mLoadingViewLayout = builder.mLoadingViewLayout;
         mCancelable = builder.mCancelable;
         mOutsideCancelable = builder.mOutsideCancelable;
     }
 
-    private ATCircleDialog(Context context, int themeResId) {
+    private CircleDialogLoading(Context context, int themeResId) {
         super(context, R.style.Translucent_Dialog);
     }
 
@@ -44,9 +44,9 @@ public class ATCircleDialog extends Dialog {
         private boolean mCancelable;
         private boolean mOutsideCancelable;
 
-        public Builder(Context context, int loadingViewLayout) {
+        public Builder(Context context) {
             mContext = context;
-            mLoadingViewLayout = loadingViewLayout;
+            mLoadingViewLayout= R.layout.dialog_circle_loading;
         }
 
         public Builder cancelable(boolean cancelable) {
@@ -59,8 +59,13 @@ public class ATCircleDialog extends Dialog {
             return this;
         }
 
-        public ATCircleDialog build() {
-            return new ATCircleDialog(this);
+        public Builder loadingViewLayout(int loadingViewLayout){
+            this.mLoadingViewLayout=loadingViewLayout;
+            return this;
+        }
+
+        public CircleDialogLoading build() {
+            return new CircleDialogLoading(this);
         }
     }
 
