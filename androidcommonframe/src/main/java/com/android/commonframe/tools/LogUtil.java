@@ -2,6 +2,7 @@ package com.android.commonframe.tools;
 
 import android.text.TextUtils;
 
+import com.android.commonframe.BuildConfig;
 import com.android.commonframe.net.RetrofitFactory;
 import com.orhanobut.logger.Logger;
 
@@ -31,6 +32,7 @@ public final class LogUtil {
     }
 
     public static void d(String content) {
+        boolean isDE = BuildConfig.DEBUG;
         if (!RetrofitFactory.issIsShowLog()) return;
         Logger.d(content);
     }
@@ -84,7 +86,7 @@ public final class LogUtil {
     public static void w(Throwable tr) {
         if (!RetrofitFactory.issIsShowLog()) return;
         String tag = generateTag();
-        Logger.w(tag,tr);
+        Logger.w(tag, tr);
     }
 
 

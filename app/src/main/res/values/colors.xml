@@ -1,6 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- app them color default-->
+    <color name="at_color_transparent">#0000</color>//(000,000,000,000)
+    <color name="at_color_black">#000000</color><!--(0,0,0)-->
+    <color name="at_color_white">#ffffff</color><!--(255,255,255)-->
+    <color name="at_color_sign_in_up_fifty_white">#7Dffffff</color>
+    <color name="at_color_sign_in_up_thirdty_white">#4Cffffff</color>
+    <color name="at_color_top_navigation_bar">#fcfcfc</color>
+    <color name="at_color_default">#8ace00</color><!--(255,180,18)-->
+    <color name="at_color_pressed">#7cb700</color><!--(255,102,166)-->
+    <color name="at_color_app_background">#f7f7f7</color><!--(245,244,249)-->
+    <color name="at_color_transparent_white_background_and_bottom_navigation_bar">#E5ffffff
+    </color><!--(255,255,255)-->
+    <color name="at_color_transparent_black_background_and_bottom_navigation_bar">#b2000000
+    </color><!--(0,0,0)-->
+    <color name="at_color_white_cutting_line_and_selected_color">#e6e6e6</color><!--(230,230,230)-->
+    <color name="at_color_button_stroke">#d1d1d1</color><!--(209,209,209)-->
+    <!--text color-->
+    <color name="at_color_important_text_for_example_title">#333333</color><!--(51,51,51)-->
+    <color name="at_color_normal_text_for_example_body">#666666</color><!--(102,102,102)-->
+    <color name="at_color_captions_text">#999999</color><!--(153,153,153)-->
+    <color name="at_color_hint_text">#d1d1d1</color><!--(209,209,209)-->
+    <color name="at_color_overdue_price">#d1d1d1</color><!--(209,209,209)-->
+    <color name="at_color_price_text">#fd7530</color><!--(255,91,19)-->
+    <!--hot play page-->
+    <color name="at_color_hot_play_title_line">#27000000</color>
+    <!--hotel detail page -->
+    <color name="at_color_hotel_detail_text">#484848</color><!--(72,72,72)-->
+    <color name="at_color_hotel_detail_qi">#B3B3B3</color><!--(179,179,179)-->
+    <!--hotel mapWebview color-->
+    <color name="at_color_hotel_mapView_bottom_background">#CC484848</color><!--80%(72,72,72)-->
+
+    <!--calendar -->
+    <color name="at_color_calendar_title_show_background">#e5666666</color>
+    <color name="at_color_calendar_title_prompt_text">#99ffffff</color>
+    <color name="at_color_calendar_selected_middle_text_bg">#cc8ace00</color>
+    <!-- flight -->
+    <color name="at_color_flight_real_fly_text">#5ABFB6</color>
+    <color name="at_color_flight_order_phone_number">#484848</color><!--(72,72,72)-->
+    <!--flight detail explain -->
+    <color name="at_color_flight_explain">#74C8C2</color> <!--(116,200,194)-->
+    <!--hotel detail comment page score color-->
+    <color name="at_color_hotel_comment_score">#fdb330</color><!--(253,179,48)-->
+    <!--color of frameLayout of order page.-->
+    <color name="at_color_order_framelayout">#99000000</color><!--(153,0,0,0,0)-->
+    <!--color of city and country list tab text-->
+    <color name="at_color_city_country_tab_text">#484848</color>
+    <!-- color old -->
+    <color name="at_color_55bfb7">#55bfb7</color> <!--(85,191,183)-->
+    <color name="at_color_484848">#484848</color><!--(72,72,72)-->
+    <color name="at_color_fe6a03">#fe6a03</color><!--(254,106,3)-->
+    <color name="at_color_757575">#757575</color><!--(117,117,117)-->
+
+    <color name="at_color_fdb330">#fdb330</color><!--(253,179,48)-->
+    <color name="at_color_16364f">#16364f</color><!--(22,54,79)-->
+    <color name="at_color_dfdfdd">#dfdfdd</color>
+
+    <color name="at_color_fad485">#fad485</color><!--(250,212,133)-->
+    <color name="at_color_e9e9e9">#e9e9e9</color><!--(233,233,233)-->
+    <color name="at_color_fe4748">#FE4748</color><!--(254,71,72)-->
+    <color name="at_color_b3b3b3">#B3B3B3</color><!--(179,179,179)-->
+    <color name="at_color_000000_40">#66000000</color>
+
+    <color name="at_color_ffffff_40">#66ffffff</color>
+
+
+    <color name="at_color_000000_80">#CC000000</color>
+    <color name="at_color_001b56">#001b56</color>
+    <color name="at_color_ea3801">#ea3801</color>
+
+    <!--citylist serach bg color-->
+    <color name="at_color_citylist_search_backgroud">#eeeeee</color>
+
+    <!--at login button and crad item de colors-->
+    <color name="at_color_colorW">#FFFFFF</color>
+    <color name="at_color_strack">#D1D1D1</color>
+    <color name="at_color_text_high_light">#FB7530</color>
+    <color name="at_color_text_normal">#D1D1D1</color>
+    <color name="at_color_triangle">@android:color/holo_green_light</color>
+    <color name="at_color_triangle_Flag">@android:color/white</color>
+    <color name="at_color_dash_Line">#e6e6e6</color>
+    <color name="at_color_red_date">#e5fb7530</color>
+    <color name="at_color_seventy_white">#B2FFFFFF</color>
+    <color name="at_color_sixty_white">#99FFFFFF</color>
+
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="toastColor">#4c4c4c</color>
+
+    <!-- dialog loading color-->
+    <color name="at_color_dialog_loading">#cc8ace00</color>
+    <color name="at_color_dialog_loading_light">#668ace00</color>
+    <color name="at_color_holo_green_light">#ff99cc00</color>
 </resources>

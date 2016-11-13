@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/rl_common_title_left"
+            android:layout_width="@dimen/dimens_60_dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/iv_common_title_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:contentDescription="@string/desc_back"
+                android:src="@mipmap/image_title_arrow_left"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tv_common_title_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:textColor="@color/at_color_important_text_for_example_title"
+                android:textSize="@dimen/dimens_18_sp"
+                android:visibility="gone" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_common_title_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_common_title_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/desc_right_icon"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_common_title_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/at_color_important_text_for_example_title"
+                android:textSize="@dimen/dimens_18_sp"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_common_title_right"
+            android:layout_width="@dimen/dimens_60_dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|end">
+
+            <ImageView
+                android:id="@+id/iv_common_title_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:contentDescription="@string/desc_back"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_common_title_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:textColor="@color/at_color_important_text_for_example_title"
+                android:textSize="@dimen/dimens_18_sp"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_common_title_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_0.5_dp"
+        android:background="@color/at_color_white_cutting_line_and_selected_color"
+        android:contentDescription="@string/desc_line" />
+
+</LinearLayout>

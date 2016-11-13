@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/at_color_app_background"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:visibility="visible">
+
+    <ImageView
+        android:id="@+id/iv_failed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimens_75_dp"
+        android:src="@mipmap/failed_wifi_icon" />
+
+    <TextView
+        android:id="@+id/tv_failed_first_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimens_30_dp"
+        android:layout_marginRight="@dimen/dimens_30_dp"
+        android:layout_marginTop="@dimen/dimens_50_dp"
+        android:text="@string/at_no_network"
+        android:textColor="@color/at_color_normal_text_for_example_body"
+        android:textSize="@dimen/dimens_16_sp" />
+
+    <TextView
+        android:id="@+id/tv_failed_second_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimens_8_dp"
+        android:text="@string/at_no_network"
+        android:textColor="@color/at_color_normal_text_for_example_body"
+        android:textSize="@dimen/dimens_16_sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_click_retry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimens_25_dp"
+        android:text="@string/at_click_wifi_load"
+        android:textColor="@color/at_color_captions_text"
+        android:textSize="@dimen/dimens_14_sp" />
+
+</LinearLayout>

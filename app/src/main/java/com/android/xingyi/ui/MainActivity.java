@@ -10,12 +10,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.android.commonframe.tools.LogUtil;
 import com.android.xingyi.BuildConfig;
 import com.android.xingyi.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-
 
 
 public class MainActivity extends AppCompatActivity {
@@ -38,8 +38,9 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
-        textView.setText("基础框架搭建完毕可以开发---哈哈哈---DEBUG模式-->"+ BuildConfig.DEBUG);
+        String desc = "基础框架搭建完毕可以开发---哈哈哈---DEBUG模式-->" + BuildConfig.DEBUG;
+        textView.setText(desc);
+        LogUtil.d(desc);
     }
 
     @Override
