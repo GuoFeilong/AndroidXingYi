@@ -42,6 +42,7 @@ public abstract class BaseTitleAndBottomActivity extends SwipBackActivity {
     protected RelativeLayout commontTitleLeftContainer;
     protected RelativeLayout commontTitleContentContainer;
     protected RelativeLayout commontTitleRightContainer;
+    protected LinearLayout commonBottomContainer;
     protected ImageView commonTitleLeftIcon;
     protected TextView commonTitleLeftDesc;
     protected ImageView commonTitleContentIcon;
@@ -145,6 +146,7 @@ public abstract class BaseTitleAndBottomActivity extends SwipBackActivity {
         commontTitleLeftContainer = (RelativeLayout) findViewById(R.id.rl_common_title_left);
         commontTitleContentContainer = (RelativeLayout) findViewById(R.id.rl_common_title_content);
         commontTitleRightContainer = (RelativeLayout) findViewById(R.id.rl_common_title_right);
+        commonBottomContainer = (LinearLayout) findViewById(R.id.ll_common_bottom_container);
         commonTitleLeftIcon = (ImageView) findViewById(R.id.iv_common_title_left);
         commonTitleLeftDesc = (TextView) findViewById(R.id.tv_common_title_left);
         commonTitleContentIcon = (ImageView) findViewById(R.id.iv_common_title_content);

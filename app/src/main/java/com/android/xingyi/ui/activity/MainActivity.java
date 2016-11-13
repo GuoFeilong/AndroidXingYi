@@ -31,9 +31,11 @@ public class MainActivity extends BaseTitleAndBottomActivity {
 
     @Override
     protected void initEvent() {
+        banner.setText("这是首页的BanNer");
         userDefinedLeftContainerVisible(false);
         userDefinedRightContainerVisible(false);
         userDefinedContentDesc("星公益");
-        banner.setText("这是首页的BanNer");
+        userDefinedCommonBottomVisible(true);
+        userDefinedBottomLineVisible(true);
     }
 }

@@ -2,6 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/at_color_red_date"
     android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_common_bottom_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_0.5_dp"
+        android:background="@color/at_color_white_cutting_line_and_selected_color"
+        android:contentDescription="@string/desc_line" />
+
+    <LinearLayout
+        android:id="@+id/ll_common_bottom_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+    </LinearLayout>
 
 </LinearLayout>
