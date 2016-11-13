@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.SweepGradient;
@@ -69,8 +70,8 @@ public class CircleView extends View {
         doughnutColors = new int[]{
                 ContextCompat.getColor(getContext(), android.R.color.holo_green_light),
                 ContextCompat.getColor(getContext(), android.R.color.holo_orange_light),
-                ContextCompat.getColor(getContext(), android.R.color.holo_red_light),
-                ContextCompat.getColor(getContext(), android.R.color.holo_purple)
+                ContextCompat.getColor(getContext(), android.R.color.holo_green_light),
+                ContextCompat.getColor(getContext(), android.R.color.holo_purple),
         };
         valueAnimator = ValueAnimator.ofFloat(0, 1.F);
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {

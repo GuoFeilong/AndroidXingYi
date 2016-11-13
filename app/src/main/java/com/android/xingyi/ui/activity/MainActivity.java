@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.android.commonframe.net.api.APIResponse;
-import com.android.commonframe.tools.CollectionUtil;
 import com.android.commonframe.ui.customview.loading.CircleDialogLoading;
 import com.android.xingyi.R;
 import com.android.xingyi.entity.HomeBottomBarEntity;
@@ -66,17 +65,23 @@ public class MainActivity extends BaseTitleAndBottomActivity implements HomeBott
 
     @Override
     public void showNetWorkProgress() {
-
+        if (circleDialogLoading != null && !circleDialogLoading.isShowing()) {
+            circleDialogLoading.show();
+        }
     }
 
     @Override
     public void disMissProgress() {
-
+        if (circleDialogLoading != null && circleDialogLoading.isShowing()) {
+            circleDialogLoading.dismiss();
+        }
     }
 
     @Override
     public void onError(Throwable e) {
-
+        if (circleDialogLoading != null && circleDialogLoading.isShowing()) {
+            circleDialogLoading.dismiss();
+        }
     }
 
     @Override
@@ -85,7 +90,10 @@ public class MainActivity extends BaseTitleAndBottomActivity implements HomeBott
             homeBottomBarData = result.getData();
             for (HomeBottomBarEntity currentEntity : homeBottomBarData) {
                 if (currentEntity != null) {
-                    addView2BottomBarContainer(homeBottomPresenterImpl.initBottomTextView(currentEntity));
+                    TextView bottomTextView = homeBottomPresenterImpl.initBottomTextView(currentEntity);
+                    currentEntity.setBottomBarTextView(bottomTextView);
+                    addView2BottomBarContainer(bottomTextView);
+                    homeBottomPresenterImpl.addClickEventForCurrentView(bottomTextView, currentEntity);
                 }
             }
         }
