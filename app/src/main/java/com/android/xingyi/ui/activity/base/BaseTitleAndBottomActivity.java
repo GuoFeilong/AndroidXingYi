@@ -1,4 +1,4 @@
-package com.android.xingyi.ui.activity;
+package com.android.xingyi.ui.activity.base;
 
 import android.content.Context;
 import android.content.Intent;
@@ -22,7 +22,6 @@ import com.android.xingyi.R;
 import com.android.xingyi.appinterface.NoDoubleClickListener;
 import com.android.xingyi.enumerations.ErrorPageType;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -31,61 +30,43 @@ import butterknife.ButterKnife;
  * Created by Feilong.Guo on 2016/11/13.
  */
 
-public abstract class BaseTitleAndBottomActivity extends BaseActivity {
+public abstract class BaseTitleAndBottomActivity extends SwipBackActivity {
     private float xPort;
     private float yPort;
-
-    @Bind(R.id.include_common_title)
-    View includeCommonTitle;
-    @Bind(R.id.include_common_bottom)
-    View includeCommonBottom;
-    @Bind(R.id.include_common_failed)
-    View includeCommonFaied;
-    @Bind(R.id.fl_content_view_container)
-    FrameLayout contentViewContainer;
-    @Bind(R.id.rl_common_title_left)
-    RelativeLayout commontTitleLeftContainer;
-    @Bind(R.id.rl_common_title_content)
-    RelativeLayout commontTitleContentContainer;
-    @Bind(R.id.rl_common_title_right)
-    RelativeLayout commontTitleRightContainer;
-    @Bind(R.id.iv_common_title_left)
-    ImageView commonTitleLeftIcon;
-    @Bind(R.id.tv_common_title_left)
-    TextView commonTitleLeftDesc;
-    @Bind(R.id.iv_common_title_content)
-    ImageView commonTitleContentIcon;
-    @Bind(R.id.tv_common_title_content)
-    TextView commonTitleContentDesc;
-    @Bind(R.id.iv_common_title_right)
-    ImageView commonTitleRightIcon;
-    @Bind(R.id.tv_common_title_right)
-    TextView commonTitleRightDesc;
-    @Bind(R.id.iv_failed)
-    ImageView failedIcon;
-    @Bind(R.id.tv_failed_first_text)
-    TextView failedFirstDesc;
-    @Bind(R.id.tv_failed_second_text)
-    TextView failedSeconedDesc;
-    @Bind(R.id.tv_click_retry)
-    TextView failedClickRetry;
-
     private ErrorPageType errorPageType;
+
+    protected View includeCommonTitle;
+    protected View includeCommonBottom;
+    protected View includeCommonFaied;
+    protected FrameLayout contentViewContainer;
+    protected RelativeLayout commontTitleLeftContainer;
+    protected RelativeLayout commontTitleContentContainer;
+    protected RelativeLayout commontTitleRightContainer;
+    protected ImageView commonTitleLeftIcon;
+    protected TextView commonTitleLeftDesc;
+    protected ImageView commonTitleContentIcon;
+    protected TextView commonTitleContentDesc;
+    protected ImageView commonTitleRightIcon;
+    protected TextView commonTitleRightDesc;
+    protected ImageView commonTitleLine;
+    protected ImageView failedIcon;
+    protected TextView failedFirstDesc;
+    protected TextView failedSeconedDesc;
+    protected TextView failedClickRetry;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_base_title_and_bottom);
-        ButterKnife.bind(this);
         abnormalExit(savedInstanceState);
-        initBaseEvent();
-
     }
 
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
+        initBaseView();
         View view = getLayoutInflater().inflate(layoutResID, null);
         contentViewContainer.addView(view, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        initBaseEvent();
     }
 
     @Override
@@ -156,6 +137,28 @@ public abstract class BaseTitleAndBottomActivity extends BaseActivity {
         }
     }
 
+    private void initBaseView() {
+        includeCommonTitle = findViewById(R.id.include_common_title);
+        includeCommonBottom = findViewById(R.id.include_common_bottom);
+        includeCommonFaied = findViewById(R.id.include_common_failed);
+        contentViewContainer = (FrameLayout) findViewById(R.id.fl_content_view_container);
+        commontTitleLeftContainer = (RelativeLayout) findViewById(R.id.rl_common_title_left);
+        commontTitleContentContainer = (RelativeLayout) findViewById(R.id.rl_common_title_content);
+        commontTitleRightContainer = (RelativeLayout) findViewById(R.id.rl_common_title_right);
+        commonTitleLeftIcon = (ImageView) findViewById(R.id.iv_common_title_left);
+        commonTitleLeftDesc = (TextView) findViewById(R.id.tv_common_title_left);
+        commonTitleContentIcon = (ImageView) findViewById(R.id.iv_common_title_content);
+        commonTitleContentDesc = (TextView) findViewById(R.id.tv_common_title_content);
+        commonTitleRightIcon = (ImageView) findViewById(R.id.iv_common_title_right);
+        commonTitleRightDesc = (TextView) findViewById(R.id.tv_common_title_right);
+        commonTitleLine = (ImageView) findViewById(R.id.iv_common_title_line);
+        failedIcon = (ImageView) findViewById(R.id.iv_failed);
+        failedFirstDesc = (TextView) findViewById(R.id.tv_failed_first_text);
+        failedSeconedDesc = (TextView) findViewById(R.id.tv_failed_second_text);
+        failedClickRetry = (TextView) findViewById(R.id.tv_click_retry);
+    }
+
+
     private void initBaseEvent() {
         includeCommonFaied.setOnClickListener(new NoDoubleClickListener() {
             @Override
@@ -179,15 +182,23 @@ public abstract class BaseTitleAndBottomActivity extends BaseActivity {
         });
 
         initData();
-        initView();
+        initButterKinfeForChild();
         initEvent();
+    }
+
+    /**
+     * butterknife的实例化,在父类中写一次即可
+     * 这里的实例化并不是绑定当前类的,是给他的每个子类用的
+     * 所以不要随意更改次方法的执行顺序,并且不要把当前类的view
+     * 替换成@bind的形式,因为那样对于子类将全部失效,bind到父类上了
+     */
+    private void initButterKinfeForChild() {
+        ButterKnife.bind(this);
     }
 
     protected abstract void clickCommonTitleRight();
 
     protected abstract void initData();
-
-    protected abstract void initView();
 
     protected abstract void initEvent();
 
@@ -270,6 +281,16 @@ public abstract class BaseTitleAndBottomActivity extends BaseActivity {
         includeCommonBottom.setVisibility(commonTitleState);
     }
 
+    protected void userDefinedLeftContainerVisible(boolean visible) {
+        int commonTitleState = visible ? View.VISIBLE : View.GONE;
+        commontTitleLeftContainer.setVisibility(commonTitleState);
+    }
+
+    protected void userDefinedRightContainerVisible(boolean visible) {
+        int commonTitleState = visible ? View.VISIBLE : View.GONE;
+        commontTitleRightContainer.setVisibility(commonTitleState);
+    }
+
     protected void userDefinedLeftIcon(int resID) {
         commonTitleLeftIcon.setVisibility(View.VISIBLE);
         commonTitleLeftIcon.setImageResource(resID);
@@ -304,5 +325,10 @@ public abstract class BaseTitleAndBottomActivity extends BaseActivity {
         commonTitleRightIcon.setVisibility(View.GONE);
         commonTitleRightDesc.setText(desc);
         commonTitleRightDesc.setVisibility(View.VISIBLE);
+    }
+
+    protected void userDefinedBottomLineVisible(boolean visible) {
+        int commonTitleState = visible ? View.VISIBLE : View.GONE;
+        commonTitleLine.setVisibility(commonTitleState);
     }
 }

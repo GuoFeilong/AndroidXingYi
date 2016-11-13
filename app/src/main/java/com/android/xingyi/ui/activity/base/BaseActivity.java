@@ -1,4 +1,4 @@
-package com.android.xingyi.ui.activity;
+package com.android.xingyi.ui.activity.base;
 
 import android.Manifest;
 import android.content.Intent;
