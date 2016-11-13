@@ -51,6 +51,10 @@ Android开发框架
 ###1. MVP分层
 ###2. UI-->Activity-->Fragment-->CustomView-->Adpaters
 ###3. 业务模型-->业务接口-->View层接口
+###4. 通用标题加底部栏目的activity抽取,支持设置滑动关闭
+###5. 通用fragment抽取
+###6. ButterKnife的基类只要绑定一次即可
+###7. MVP分层以及本地数据MVP和网络MVP实例代码
 
 ***
 
@@ -89,6 +93,18 @@ Android开发框架
 ###3. drawable中shape规范,icon命名规范
 ###4. 代码异常捕捉以及遍历规范,对象判空使用
 
+***
+###预览图:
+![这里写图片描述](http://img.blog.csdn.net/20161113231709672)
+
+图中展示的上部分标题栏和下面底部TAB栏目全部可以自定义配置,
+具体根据需求修改代码即可,所有业务代码全部在presenter里面
+
+![这里写图片描述](http://img.blog.csdn.net/20161113232029948)
+
+###以后根据自己的业务线增加对应的presenter即可,方便和activity解耦
+
+
 
 
 
@@ -100,3 +116,7 @@ Android开发框架
 
 
                                  
+***
+#*源代码下载地址*:[https://github.com/GuoFeilong/AndroidXingYi](https://github.com/GuoFeilong/AndroidXingYi)
+
+#请多多star谢谢!!
