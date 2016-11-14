@@ -15,11 +15,6 @@ public class MeFragment extends BaseAbsFragment {
     }
 
     @Override
-    protected void initView() {
-
-    }
-
-    @Override
     protected void initEvent() {
 
     }

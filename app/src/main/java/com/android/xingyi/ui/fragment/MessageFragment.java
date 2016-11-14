@@ -15,11 +15,6 @@ public class MessageFragment extends BaseAbsFragment {
     }
 
     @Override
-    protected void initView() {
-
-    }
-
-    @Override
     protected void initEvent() {
 
     }
