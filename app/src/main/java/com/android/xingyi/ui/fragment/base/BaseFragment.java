@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,20 +15,21 @@ import android.view.ViewGroup;
  * Created by Feilong.Guo on 2016/11/13.
  */
 
-public class Fragment extends android.support.v4.app.Fragment {
+public class BaseFragment extends Fragment {
     private static final String STATE_SAVE_IS_HIDDEN = "STATE_SAVE_IS_HIDDEN";
     protected static final String BUNDLE_FRAGMENT_KEY = "bundle_fragment_key";
     protected Context activityContext;
     protected Parcelable bundleParcel;
-    public Fragment() {
+
+    public BaseFragment() {
     }
 
-    public  static Fragment newInstance(Parcelable parcelable, int fragmentLayoutID) {
-        Fragment fragment = new Fragment();
+    public static BaseFragment newInstance(Parcelable parcelable) {
+        BaseFragment baseFragment = new BaseFragment();
         Bundle args = new Bundle();
         args.putParcelable(BUNDLE_FRAGMENT_KEY, parcelable);
-        fragment.setArguments(args);
-        return fragment;
+        baseFragment.setArguments(args);
+        return baseFragment;
     }
 
     @Override

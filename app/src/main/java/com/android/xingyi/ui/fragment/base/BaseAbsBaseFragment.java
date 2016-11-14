@@ -12,7 +12,7 @@ import butterknife.ButterKnife;
  * Created by feilong.guo on 16/11/14.
  */
 
-public abstract class BaseAbsFragment extends Fragment {
+public abstract class BaseAbsBaseFragment extends BaseFragment {
 
     @Nullable
     @Override
@@ -36,7 +36,6 @@ public abstract class BaseAbsFragment extends Fragment {
 
     protected void initView(View fragmentRootView) {
         ButterKnife.bind(this, fragmentRootView);
-
     }
 
 

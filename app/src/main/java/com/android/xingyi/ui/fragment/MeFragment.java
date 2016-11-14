@@ -3,7 +3,7 @@ package com.android.xingyi.ui.fragment;
 import android.widget.TextView;
 
 import com.android.xingyi.R;
-import com.android.xingyi.ui.fragment.base.BaseAbsFragment;
+import com.android.xingyi.ui.fragment.base.BaseAbsBaseFragment;
 
 import butterknife.Bind;
 
@@ -11,7 +11,7 @@ import butterknife.Bind;
  * Created by feilong.guo on 16/11/14.
  */
 
-public class MeFragment extends BaseAbsFragment {
+public class MeFragment extends BaseAbsBaseFragment {
     @Bind(R.id.tv_me_desc)
     TextView meDesc;
 

@@ -113,12 +113,12 @@ public class MainActivity extends BaseTitleAndBottomActivity implements HomeBott
     private void initTabFragments() {
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.content_main, homeBottomBarData.get(0).getBottomBar4Fragment(), null)
-                .add(R.id.content_main, homeBottomBarData.get(1).getBottomBar4Fragment(), null)
-                .add(R.id.content_main, homeBottomBarData.get(2).getBottomBar4Fragment(), null)
-                .hide(homeBottomBarData.get(1).getBottomBar4Fragment())
-                .hide(homeBottomBarData.get(2).getBottomBar4Fragment())
-                .show(homeBottomBarData.get(0).getBottomBar4Fragment())
+                .add(R.id.content_main, homeBottomBarData.get(0).getBottomBar4BaseFragment(), null)
+                .add(R.id.content_main, homeBottomBarData.get(1).getBottomBar4BaseFragment(), null)
+                .add(R.id.content_main, homeBottomBarData.get(2).getBottomBar4BaseFragment(), null)
+                .hide(homeBottomBarData.get(1).getBottomBar4BaseFragment())
+                .hide(homeBottomBarData.get(2).getBottomBar4BaseFragment())
+                .show(homeBottomBarData.get(0).getBottomBar4BaseFragment())
                 .commitAllowingStateLoss();
     }
 
@@ -144,7 +144,7 @@ public class MainActivity extends BaseTitleAndBottomActivity implements HomeBott
         mainBottomBarEntity.getBottomBarTextView().setTextColor(ContextCompat.getColor(this, R.color.at_color_default));
         getSupportFragmentManager()
                 .beginTransaction()
-                .show(mainBottomBarEntity.getBottomBar4Fragment())
+                .show(mainBottomBarEntity.getBottomBar4BaseFragment())
                 .commit();
 
     }
@@ -184,7 +184,7 @@ public class MainActivity extends BaseTitleAndBottomActivity implements HomeBott
                             mainBottomBarEntity.getBottomBarTextView().setTextColor(ContextCompat.getColor(MainActivity.this, R.color.at_color_captions_text));
                             getSupportFragmentManager()
                                     .beginTransaction()
-                                    .hide(mainBottomBarEntity.getBottomBar4Fragment())
+                                    .hide(mainBottomBarEntity.getBottomBar4BaseFragment())
                                     .commit();
 
                         }

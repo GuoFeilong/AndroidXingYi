@@ -15,7 +15,7 @@ import com.android.xingyi.presenter.BasePresenter;
 import com.android.xingyi.ui.fragment.HomeFragment;
 import com.android.xingyi.ui.fragment.MeFragment;
 import com.android.xingyi.ui.fragment.MessageFragment;
-import com.android.xingyi.ui.fragment.base.Fragment;
+import com.android.xingyi.ui.fragment.base.BaseFragment;
 import com.android.xingyi.view.homepage.HomeBottomBarView;
 
 import java.util.ArrayList;
@@ -46,24 +46,24 @@ public class HomeBottomPresenter implements BasePresenter<HomeBottomBarView> {
         localDada = new APIResponse<>();
         List<HomeBottomBarEntity> mainBottomBarEntityList = new ArrayList<>();
         HomeBottomBarEntity tempEntity = new HomeBottomBarEntity();
-        Fragment fragment = new HomeFragment();
+        BaseFragment baseFragment = new HomeFragment();
         tempEntity.setBottomBarDesc("首页");
         tempEntity.setBottomBarTopIcon(R.drawable.selector_tab_home);
         tempEntity.setBottomBarSeleced(true);
-        tempEntity.setBottomBar4Fragment(fragment);
+        tempEntity.setBottomBar4BaseFragment(baseFragment);
         mainBottomBarEntityList.add(tempEntity);
 
         tempEntity = new HomeBottomBarEntity();
-        fragment = new MessageFragment();
-        tempEntity.setBottomBar4Fragment(fragment);
+        baseFragment = new MessageFragment();
+        tempEntity.setBottomBar4BaseFragment(baseFragment);
         tempEntity.setBottomBarDesc("消息");
         tempEntity.setBottomBarTopIcon(R.drawable.selector_tab_destination);
         tempEntity.setBottomBarSeleced(false);
         mainBottomBarEntityList.add(tempEntity);
 
         tempEntity = new HomeBottomBarEntity();
-        fragment = new MeFragment();
-        tempEntity.setBottomBar4Fragment(fragment);
+        baseFragment = new MeFragment();
+        tempEntity.setBottomBar4BaseFragment(baseFragment);
         tempEntity.setBottomBarDesc("我的");
         tempEntity.setBottomBarTopIcon(R.drawable.selector_tab_me);
         tempEntity.setBottomBarSeleced(false);

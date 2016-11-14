@@ -2,7 +2,7 @@ package com.android.xingyi.entity;
 
 import android.widget.TextView;
 
-import com.android.xingyi.ui.fragment.base.Fragment;
+import com.android.xingyi.ui.fragment.base.BaseFragment;
 
 /**
  * Created by Feilong.Guo on 2016/11/13.
@@ -11,7 +11,7 @@ import com.android.xingyi.ui.fragment.base.Fragment;
 public class HomeBottomBarEntity {
     private String bottomBarDesc;
     private int bottomBarTopIcon;
-    private Fragment bottomBar4Fragment;
+    private BaseFragment bottomBar4BaseFragment;
     private TextView bottomBarTextView;
     private boolean bottomBarSeleced;
 
@@ -31,12 +31,12 @@ public class HomeBottomBarEntity {
         this.bottomBarTopIcon = bottomBarTopIcon;
     }
 
-    public Fragment getBottomBar4Fragment() {
-        return bottomBar4Fragment;
+    public BaseFragment getBottomBar4BaseFragment() {
+        return bottomBar4BaseFragment;
     }
 
-    public void setBottomBar4Fragment(Fragment bottomBar4Fragment) {
-        this.bottomBar4Fragment = bottomBar4Fragment;
+    public void setBottomBar4BaseFragment(BaseFragment bottomBar4BaseFragment) {
+        this.bottomBar4BaseFragment = bottomBar4BaseFragment;
     }
 
     public TextView getBottomBarTextView() {
