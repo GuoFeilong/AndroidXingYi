@@ -105,6 +105,14 @@ Android开发框架
 ###以后根据自己的业务线增加对应的presenter即可,方便和activity解耦
 
 
+***
+###加入basefragment之后的最终结构,
+![这里写图片描述](http://img.blog.csdn.net/20161114162403600)
+
+###以后开发的时候,直接写自己的业务Fragment 和业务activity直接继承Base即可,完整的网络层,和MVP分层已经全部完成了,
+
+
+
 
 
 
