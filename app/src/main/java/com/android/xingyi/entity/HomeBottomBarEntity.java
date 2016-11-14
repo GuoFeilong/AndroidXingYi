@@ -2,7 +2,7 @@ package com.android.xingyi.entity;
 
 import android.widget.TextView;
 
-import com.android.xingyi.ui.fragment.BaseFragment;
+import com.android.xingyi.ui.fragment.base.BaseFragment;
 
 /**
  * Created by Feilong.Guo on 2016/11/13.

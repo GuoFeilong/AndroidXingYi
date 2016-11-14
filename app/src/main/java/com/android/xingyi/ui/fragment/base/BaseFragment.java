@@ -1,4 +1,4 @@
-package com.android.xingyi.ui.fragment;
+package com.android.xingyi.ui.fragment.base;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -23,7 +23,7 @@ public class BaseFragment extends Fragment {
     public BaseFragment() {
     }
 
-    public static BaseFragment newInstance(Parcelable parcelable) {
+    public  static BaseFragment newInstance(Parcelable parcelable,int fragmentLayoutID) {
         BaseFragment fragment = new BaseFragment();
         Bundle args = new Bundle();
         args.putParcelable(BUNDLE_FRAGMENT_KEY, parcelable);
