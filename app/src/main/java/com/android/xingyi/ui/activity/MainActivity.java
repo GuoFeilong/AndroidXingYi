@@ -49,6 +49,7 @@ public class MainActivity extends BaseTitleAndBottomActivity implements HomeBott
 
     @Override
     protected void initEvent() {
+        setEnableGesture(true);
         banner.setText("这是首页的BanNer");
         userDefinedLeftContainerVisible(false);
         userDefinedRightContainerVisible(false);

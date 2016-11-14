@@ -43,6 +43,11 @@ public class SwipBackActivity extends BaseActivity {
     @Override
     protected void onPause() {
         super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
         if (needAnimation) {
             ActivityAnimation.leftOut(this);
         }
