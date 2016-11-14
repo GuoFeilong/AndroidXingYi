@@ -5,10 +5,10 @@
     android:background="@android:color/holo_green_light">
 
     <TextView
+        android:id="@+id/tv_message_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="消息Fragment"
         android:textColor="@color/at_color_white"
         android:textSize="@dimen/dimens_18_sp" />
 

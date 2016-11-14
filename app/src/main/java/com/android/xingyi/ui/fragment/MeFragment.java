@@ -1,13 +1,19 @@
 package com.android.xingyi.ui.fragment;
 
+import android.widget.TextView;
+
 import com.android.xingyi.R;
 import com.android.xingyi.ui.fragment.base.BaseAbsFragment;
+
+import butterknife.Bind;
 
 /**
  * Created by feilong.guo on 16/11/14.
  */
 
 public class MeFragment extends BaseAbsFragment {
+    @Bind(R.id.tv_me_desc)
+    TextView meDesc;
 
     @Override
     protected void initData() {
@@ -16,7 +22,7 @@ public class MeFragment extends BaseAbsFragment {
 
     @Override
     protected void initEvent() {
-
+        meDesc.setText("我的Fragment");
     }
 
     @Override

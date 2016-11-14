@@ -12,7 +12,7 @@ import butterknife.ButterKnife;
  * Created by feilong.guo on 16/11/14.
  */
 
-public abstract class BaseAbsFragment extends BaseFragment {
+public abstract class BaseAbsFragment extends Fragment {
 
     @Nullable
     @Override

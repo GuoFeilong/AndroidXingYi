@@ -2,11 +2,18 @@ package com.android.xingyi.ui.activity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.commonframe.net.api.APIResponse;
+import com.android.commonframe.tools.CollectionUtil;
+import com.android.commonframe.tools.LogUtil;
+import com.android.commonframe.tools.T;
 import com.android.commonframe.ui.customview.loading.CircleDialogLoading;
 import com.android.xingyi.R;
+import com.android.xingyi.appinterface.NoDoubleClickListener;
 import com.android.xingyi.entity.HomeBottomBarEntity;
 import com.android.xingyi.presenter.homepage.HomeBottomPresenter;
 import com.android.xingyi.ui.activity.base.BaseTitleAndBottomActivity;
@@ -14,15 +21,18 @@ import com.android.xingyi.view.homepage.HomeBottomBarView;
 
 import java.util.List;
 
-import butterknife.Bind;
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
 
 public class MainActivity extends BaseTitleAndBottomActivity implements HomeBottomBarView {
     private HomeBottomPresenter homeBottomPresenterImpl;
     private CircleDialogLoading circleDialogLoading;
     private List<HomeBottomBarEntity> homeBottomBarData;
-    @Bind(R.id.tv_banner)
-    TextView banner;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +59,10 @@ public class MainActivity extends BaseTitleAndBottomActivity implements HomeBott
 
     @Override
     protected void initEvent() {
-        setEnableGesture(true);
-        banner.setText("这是首页的BanNer");
+        setEnableGesture(false);
         userDefinedLeftContainerVisible(false);
         userDefinedRightContainerVisible(false);
-        userDefinedContentDesc("星公益");
+        userDefinedContentDesc("项目名");
         userDefinedCommonBottomVisible(true);
         userDefinedBottomLineVisible(true);
         homeBottomPresenterImpl.getHomeBottomBarData();
@@ -94,9 +103,103 @@ public class MainActivity extends BaseTitleAndBottomActivity implements HomeBott
                     TextView bottomTextView = homeBottomPresenterImpl.initBottomTextView(currentEntity);
                     currentEntity.setBottomBarTextView(bottomTextView);
                     addView2BottomBarContainer(bottomTextView);
-                    homeBottomPresenterImpl.addClickEventForCurrentView(bottomTextView, currentEntity);
+                    addClickEventForCurrentView(bottomTextView, currentEntity);
                 }
             }
+            initTabFragments();
         }
+    }
+
+    private void initTabFragments() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.content_main, homeBottomBarData.get(0).getBottomBar4Fragment(), null)
+                .add(R.id.content_main, homeBottomBarData.get(1).getBottomBar4Fragment(), null)
+                .add(R.id.content_main, homeBottomBarData.get(2).getBottomBar4Fragment(), null)
+                .hide(homeBottomBarData.get(1).getBottomBar4Fragment())
+                .hide(homeBottomBarData.get(2).getBottomBar4Fragment())
+                .show(homeBottomBarData.get(0).getBottomBar4Fragment())
+                .commitAllowingStateLoss();
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (homeBottomPresenterImpl != null) {
+            homeBottomPresenterImpl.detach2View();
+        }
+    }
+
+
+    /**
+     * 把当前选中的tab设置成选中状态
+     *
+     * @param mainBottomView      当前的textview
+     * @param mainBottomBarEntity 当前的实体数据
+     */
+    private void setCurrentTabSeleced(TextView mainBottomView, HomeBottomBarEntity mainBottomBarEntity) {
+        mainBottomView.setSelected(true);
+        mainBottomBarEntity.setBottomBarSeleced(true);
+        mainBottomBarEntity.getBottomBarTextView().setTextColor(ContextCompat.getColor(this, R.color.at_color_default));
+        getSupportFragmentManager()
+                .beginTransaction()
+                .show(mainBottomBarEntity.getBottomBar4Fragment())
+                .commit();
+
+    }
+
+    /**
+     * 重置所有底部tab的状态
+     *
+     * @param selecedView   当前的textview
+     * @param selecedEntity 当前的实体数据
+     */
+    private void resetTabAndFragment(final TextView selecedView, final HomeBottomBarEntity selecedEntity) {
+        if (!CollectionUtil.isEmpty(homeBottomBarData)) {
+            Observable.from(homeBottomBarData)
+                    .filter(new Func1<HomeBottomBarEntity, Boolean>() {
+                        @Override
+                        public Boolean call(HomeBottomBarEntity mainBottomBarEntity) {
+                            return null != mainBottomBarEntity;
+                        }
+                    })
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Subscriber<HomeBottomBarEntity>() {
+                        @Override
+                        public void onCompleted() {
+                            setCurrentTabSeleced(selecedView, selecedEntity);
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            LogUtil.e(e.toString());
+                        }
+
+                        @Override
+                        public void onNext(HomeBottomBarEntity mainBottomBarEntity) {
+                            mainBottomBarEntity.getBottomBarTextView().setSelected(false);
+                            mainBottomBarEntity.setBottomBarSeleced(false);
+                            mainBottomBarEntity.getBottomBarTextView().setTextColor(ContextCompat.getColor(MainActivity.this, R.color.at_color_captions_text));
+                            getSupportFragmentManager()
+                                    .beginTransaction()
+                                    .hide(mainBottomBarEntity.getBottomBar4Fragment())
+                                    .commit();
+
+                        }
+                    });
+        }
+    }
+
+
+    public void addClickEventForCurrentView(final TextView selecedView, final HomeBottomBarEntity selecedEntity) {
+        selecedView.setOnClickListener(new NoDoubleClickListener() {
+            @Override
+            public void onClickNoDouble(View view) {
+                resetTabAndFragment(selecedView, selecedEntity);
+                T.show(MainActivity.this, "-->点击了" + selecedEntity.getBottomBarDesc(), Toast.LENGTH_SHORT);
+            }
+        });
     }
 }

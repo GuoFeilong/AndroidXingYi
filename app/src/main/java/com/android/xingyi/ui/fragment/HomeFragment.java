@@ -1,13 +1,19 @@
 package com.android.xingyi.ui.fragment;
 
+import android.widget.TextView;
+
 import com.android.xingyi.R;
 import com.android.xingyi.ui.fragment.base.BaseAbsFragment;
+
+import butterknife.Bind;
 
 /**
  * Created by feilong.guo on 16/11/14.
  */
 
 public class HomeFragment extends BaseAbsFragment {
+    @Bind(R.id.tv_banner)
+    TextView homeDesc;
 
     @Override
     protected void initData() {
@@ -16,7 +22,7 @@ public class HomeFragment extends BaseAbsFragment {
 
     @Override
     protected void initEvent() {
-
+        homeDesc.setText("我是首页Fragment中的Banner");
     }
 
     @Override

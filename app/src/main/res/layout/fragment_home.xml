@@ -5,11 +5,12 @@
     android:background="@color/colorPrimary">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="首页Fragment"
+        android:id="@+id/tv_banner"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_120_dp"
+        android:background="@color/at_color_default"
+        android:gravity="center"
         android:textColor="@color/at_color_white"
-        android:textSize="@dimen/dimens_18_sp" />
+        android:textSize="@dimen/dimens_20_sp" />
 
 </RelativeLayout>

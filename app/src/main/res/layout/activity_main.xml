@@ -4,13 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_banner"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimens_120_dp"
-        android:background="@color/at_color_default"
-        android:gravity="center"
-        android:textColor="@color/at_color_white"
-        android:textSize="@dimen/dimens_20_sp" />
+
 
 </RelativeLayout>
